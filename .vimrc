@@ -1,89 +1,269 @@
-set nocompatible
-
 " 画面表示の設定
+inoremap jj <esc>
+inoremap  ha
+inoremap  la
 
-set number                  " 行番号を表示する
-set cursorline              " カーソル行の背景色を変える
-" set cursorcolumn           " カーソル位置のカラムの背景色を変える
-set laststatus=2            " ステータス行を常に表示
-set cmdheight=2             " メッセージ表示欄を2行確保
-set showmatch               " 対応する括弧を強調表示
-set helpheight=999          " ヘルプを画面いっぱいに開く
-set list                    " 不可視文字を表示
-" 不可視文字の表示記号指定
-set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:%
-" ,eol:↲,
-syntax on                   " シンタックスハイライトを有効化
-" コメントアウトの色変更
-highlight Comment ctermfg=50
+" _/_/_/_/ Initialization  _/_/_/_/
+filetype off " Disable filetype temporary
 
+" _/_/_/_/ Common settings _/_/_/_/
+syntax enable
 
-" カーソル移動関連の設定
+set encoding=utf-8
+set fileencodings=utf-8,sjis,euc
+set fileformats=unix,dos,mac
 
-set backspace=indent,eol,start " Backspaceキーの影響範囲に制限を設けない
-" set whichwrap=b,s,h,l,<,>,[,]  " 行頭行末の左右移動で行をまたぐ
-set scrolloff=8                " 上下8行の視界を確保
-set sidescrolloff=16           " 左右スクロール時の視界を確保
-set sidescroll=1               " 左右スクロールは一文字づつ行う
+set directory=~/.vim/swap " Directory for swap files
+set backupdir=~/.vim/backup " Directory for backup files
+set number " Show line numbers
+set incsearch " Enable incremental search
+set hlsearch " Highlight search targets
+set ignorecase smartcase " Ignore case when searching only with small letters
+set showmatch " Highlight matching brackets
+set showmode " Show current mode of Vim
+set title " Show editing file title
+set ruler " Show ruler
+set expandtab " Put whitespace when type tab
+set tabstop=2 " Tab width
+set shiftwidth=2 " Indent width
+set softtabstop=2 " Moving width of cursor to consecutive spaces when type tab, backspace, etc.
+set autoindent " Follow indent width of the previous line when starting a new line
+set smartindent " Indent nicely for C-like programs when starting a new line
+set scrolloff=10 " Show 10 lines below cursor when scrolling
+set backspace=indent,eol,start " Enable backspace key
+set virtualedit=block " Remove the cursor restriction on rectangular selection
+set ambiwidth=single " Make ambiguous width single (Note: Coordinate settings of Vim and terminal)
+set wrap " Wrap long lines
+set nofoldenable " Disable text folding
+set clipboard=unnamed,unnamedplus " Copy it to clipboard on yanking text
+"set spell " Enable spell check
+set spelllang+=cjk " Exclude Japanese on spell check
+set mouse=a " Enable mouse
+set vb t_vb= " Disable beep sound
 
-" ファイル処理関連の設定
+" Open QuickFix on running vimgrep
+autocmd QuickFixCmdPost *grep* cwindow
 
-set confirm    " 保存されていないファイルがあるときは終了前に保存確認
-set hidden     " 保存されていないファイルがあるときでも別のファイルを開くことが出来る
-set autoread   " 外部でファイルに変更がされた場合は読みなおす
-set nobackup   " ファイル保存時にバックアップファイルを作らない
-set noswapfile " ファイル編集中にスワップファイルを作らない
+" Change background color on 81-100 characters of lines
+"execute "set colorcolumn=" . join(range(81,100), ',')
 
-" 検索/置換の設定
+" Indent width by language
+augroup vimrc
+autocmd! FileType cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd! FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd! FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
 
-set hlsearch   " 検索文字列をハイライトする
-set incsearch  " インクリメンタルサーチを行う
-set ignorecase " 大文字と小文字を区別しない
-set smartcase  " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
-set wrapscan   " 最後尾まで検索を終えたら次の検索で先頭に移る
-set gdefault   " 置換の時 g オプションをデフォルトで有効にする
+" Show invisible characters
+set list
+set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
 
-" タブ/インデントの設定
+" Show zenkaku whitespace
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+match ZenkakuSpace /　/
 
-set expandtab     " タブ入力を複数の空白入力に置き換える
-set tabstop=4     " 画面上でタブ文字が占める幅
-set shiftwidth=4  " 自動インデントでずれる幅
-set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
-set autoindent    " 改行時に前の行のインデントを継続する
-set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+" Configure undo feature
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+  set undolevels=1000
+  set undoreload=10000
+endif
 
-" 折り返し
-set wrap
-" 動作環境との統合関連の設定
+" Enable matchit
+if !exists('loaded_matchit')
+  runtime macros/matchit.vim
+endif
 
-" OSのクリップボードをレジスタ指定無しで Yank, Put 出来るようにする
-set clipboard=unnamed,unnamedplus
-" マウスの入力を受け付ける
-set mouse=a
-" Windows でもパスの区切り文字を / にする
-set shellslash
-" インサートモードから抜けると自動的にIMEをオフにする
-" set iminsert=2
+" Run keyword completion on inputting characters
+set completeopt=menuone
+for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
+  exec "inoremap " . k . " " . k . "<C-N><C-P>"
+endfor
 
-" コマンドラインの設定
+" # Key mappings
+" Cancel search highlighting by typing ESC key twice
+nnoremap <silent> <Esc><Esc> :nohlsearch<LF>
+" Show a list when there are multiple targets of tag jumping
+nnoremap <C-]> g<c-]>
 
-" コマンドラインモードでTABキーによるファイル名補完を有効にする
-set wildmenu wildmode=list:longest,full
-" コマンドラインの履歴を10000件保存する
-set history=10000
+" # Configure tab feature
+" Anywhere SID
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
 
-" ビープの設定
+" Set tabline
+function! s:my_tabline()
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1] " first window, first appears
+    let no = i " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 
- " ビープ音すべてを無効にする
-set visualbell t_vb=
-set noerrorbells " エラーメッセージの表示時にビープを鳴らさない
+" The prefix key.
+nnoremap [Tag] <Nop>
+nmap t [Tag]
 
-" ab 設定
-iab pf printf("%", );
+" Tab jump: from [Tag]1 to [Tag]2
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
+endfor
 
-" ruby
-filetype plugin indent on
-set tabstop=2     " 画面上でタブ文字が占める幅
-set shiftwidth=2  " 自動インデントでずれる幅
-set softtabstop=2 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set showtabline=2 " Show tab line
+noremap <silent> [Tag]c :tablast <bar> tabnew<CR>
+noremap <silent> [Tag]x :tabclose<CR>
+noremap <silent> [Tag]n :tabnext<CR>
+noremap <silent> [Tag]p :tabprevious<CR>
 
+" _/_/_/_/ Dein _/_/_/_/
+if &compatible
+  set nocompatible
+endif
+
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+call dein#begin(expand('~/.vim/dein'))
+call dein#add('Shougo/dein.vim')
+
+" >>>> Plug-ins >>>>
+call dein#add('Shougo/vimproc.vim', { 'build' : 'make' })
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('vim-scripts/sudo.vim')
+call dein#add('tpope/vim-surround')
+call dein#add('thinca/vim-qfreplace')
+call dein#add('scrooloose/nerdtree')
+"call dein#add('nathanaelkane/vim-indent-guides')
+call dein#add('kana/vim-smartinput')
+call dein#add('cohama/vim-smartinput-endwise')
+call dein#add('thinca/vim-quickrun')
+call dein#add('dag/vim2hs')
+call dein#add('derekwyatt/vim-scala')
+call dein#add('kchmck/vim-coffee-script')
+call dein#add('slim-template/vim-slim')
+call dein#add('pangloss/vim-javascript')
+call dein#add('mxw/vim-jsx')
+call dein#add('scrooloose/syntastic')
+call dein#add('pmsorhaindo/syntastic-local-eslint.vim')
+" <<<< Plug-ins <<<<
+
+call dein#end()
+
+" >>>> Settings for plug-ins >>>>
+" # vim-colors-solarized
+let g:solarized_termtrans=1
+
+set background=dark
+"colorscheme solarized
+
+" # sudo.vim
+command SudoE :e sudo:%
+command SudoW :w sudo:%
+
+" # nerdtree
+let NERDTreeShowHidden = 1 " Show hidden files
+
+" # vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=236
+
+" # vim-smartimput
+" Handel spaces inside parentheses nicely
+call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
+
+" Insert spaces inside parentheses nicely
+call smartinput#define_rule({
+\ 'at'    : '(\%#)',
+\ 'char'  : '<Space>',
+\ 'input' : '<Space><Space><Left>'
+\})
+call smartinput#define_rule({
+\ 'at'    : '{\%#}',
+\ 'char'  : '<Space>',
+\ 'input' : '<Space><Space><Left>'
+\})
+
+" Delete spaces inside parentheses nicely
+call smartinput#define_rule({
+\ 'at'    : '( \%# )',
+\ 'char'  : '<BS>',
+\ 'input' : '<Del><BS>'
+\})
+call smartinput#define_rule({
+\ 'at'    : '{ \%# }',
+\ 'char'  : '<BS>',
+\ 'input' : '<Del><BS>'
+\})
+
+" Remove trailing spaces when starting a new line
+call smartinput#define_rule({
+\ 'at'    : '\s\+\%#',
+\ 'char'  : '<CR>',
+\ 'input' : "<C-o>:call setline('.', substitute(getline('.'), '\\s\\+$', '', ''))<CR><CR>"
+\})
+
+" # vim-smartinput-endwise
+call smartinput_endwise#define_default_rules()
+
+" # thinca/vim-quickrun
+let g:quickrun_config = {
+\ "_" : {
+\   "runner" : "vimproc",
+\   "runner/vimproc/updatetime" : 60,
+\   "outputter" : "error",
+\   "outputter/error/success" : "buffer",
+\   "outputter/error/error"   : "quickfix",
+\   "outputter/buffer/split" : ":botright 8sp",
+\   "hook/time/enable" : 1
+\ },
+\ "cpp" : {
+\   "type" : "cpp/g++"
+\ },
+\ "cpp/g++" : {
+\   "cmdopt" : "-std=c++11 -Wall",
+\ }
+\}
+
+" :r closes QuickFix then runs QuickVim
+let g:quickrun_no_default_key_mappings = 1
+nnoremap ,r :cclose<CR>:QuickRun -mode n<CR>
+xnoremap ,r :<C-U>cclose<CR>gv:QuickRun -mode v<CR>
+
+" <C-c> kills running QuickVim forcibly
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+
+" # vim2hs
+let g:haskell_conceal = 0
+
+" # vim-jsx
+let g:jsx_ext_required = 0
+
+" # syntastic
+let g:syntastic_mode_map = { 'mode' : 'passive' }
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_javascript_checkers = ['eslint']
+" <<<< Settings for plug-ins <<<<
+
+if dein#check_install()
+  call dein#install()
+endif
+
+" _/_/_/_/ Finalization _/_/_/_/
+filetype plugin indent on " Re-enable filetype
