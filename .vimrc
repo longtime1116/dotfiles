@@ -2,6 +2,7 @@
 inoremap jj <esc>
 inoremap  ha
 inoremap  la
+set wildmode=list:longest
 
 " _/_/_/_/ Initialization  _/_/_/_/
 filetype off " Disable filetype temporary
