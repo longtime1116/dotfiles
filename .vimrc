@@ -2,8 +2,10 @@
 inoremap jj <esc>
 inoremap  ha
 inoremap  la
-set wildmode=list:longest
+noremap <S-s> k$ i#<esc>
+noremap s k$ x<esc>
 
+set wildmode=list:longest
 " _/_/_/_/ Initialization  _/_/_/_/
 filetype off " Disable filetype temporary
 
@@ -57,7 +59,7 @@ augroup END
 
 " Show invisible characters
 set list
-set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 
 " Show zenkaku whitespace
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
