@@ -1,7 +1,7 @@
 " 画面表示の設定
 inoremap jj <esc>
-inoremap  ha
-inoremap  la
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 noremap <S-s> k$ i#<esc>
 noremap s k$ x<esc>
 
