@@ -1,0 +1,11 @@
+[user]
+  name = longtime1116
+  email = longtime1116@gmail.com
+[alias]
+l = log --all --graph --pretty='format:%C(yellow)%h%C(cyan)%d %C(red)%ar  %C(reset)%s'
+[core]
+	editor = vim
+[merge]
+	ff = false
+[pull]
+	ff = only
