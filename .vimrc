@@ -8,8 +8,11 @@ inoremap <C-l> <Right>
 noremap <S-s> k$ i#<esc>
 noremap s k$ x<esc>
 
+" .vue ファイルのシンタックス
+autocmd BufNewFile,BufRead *.{vue*} set filetype=html
+
 " 画面表示の設定
-"
+
 set wildmode=list:longest
 " _/_/_/_/ Initialization  _/_/_/_/
 filetype off " Disable filetype temporary
