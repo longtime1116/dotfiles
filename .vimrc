@@ -1,3 +1,7 @@
+" for C
+" set tabstop=4
+" set shiftwidth=4
+
 " escape を楽に
 inoremap jj <esc>
 inoremap jk <esc>
