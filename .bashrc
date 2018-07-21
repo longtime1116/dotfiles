@@ -8,7 +8,7 @@ alias gppw='g++ -Wall -o'
 alias gccd='gcc -g -O0 -o'
 alias gppd='g++ -g -O0 -o'
 
-function cl() { clang -o $1 $2; }
+function cl() { clang -o $1 $2 -Weverything; }
 function cld() { clang -o $1 $2 -g -O0; }
 
 alias ctag='ctags --exclude=".git*" -R .'
