@@ -1,4 +1,6 @@
 export PS1="[\u:\w]$"
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 
 alias gdb="gdb -q"
@@ -41,4 +43,4 @@ source ~/.nvm/nvm.sh
 
 # $ ruby -v した時に、rbenv で設定した ruby と同じものを使うように
 eval "$(rbenv init -)"
-
+eval "$(pyenv init -)"
