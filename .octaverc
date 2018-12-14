@@ -1,3 +1,4 @@
-setenv('GNUTERM','qt')
+setenv("GNUTERM", "aqua")
 graphics_toolkit("gnuplot")
 PS1('>> ')
+
