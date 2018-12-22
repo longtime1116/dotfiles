@@ -44,3 +44,6 @@ source ~/.nvm/nvm.sh
 # $ ruby -v した時に、rbenv で設定した ruby と同じものを使うように
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
+
+export GOPATH="$HOME/develop/go"
+export PATH=$PATH:$GOPATH/bin
