@@ -173,6 +173,7 @@ call dein#add('pangloss/vim-javascript')
 call dein#add('mxw/vim-jsx')
 call dein#add('scrooloose/syntastic')
 call dein#add('pmsorhaindo/syntastic-local-eslint.vim')
+call dein#add('fatih/vim-go')
 " <<<< Plug-ins <<<<
 
 call dein#end()
@@ -279,6 +280,11 @@ let g:syntastic_javascript_checkers = ['eslint']
 if dein#check_install()
   call dein#install()
 endif
+
+" go
+let g:go_bin_path = $GOPATH.'/bin'
+let g:go_version_warning = 0
+let g:go_fmt_options = ''
 
 " _/_/_/_/ Finalization _/_/_/_/
 filetype plugin indent on " Re-enable filetype
