@@ -45,5 +45,5 @@ source ~/.nvm/nvm.sh
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
-export GOPATH="$HOME/develop/go"
+export GOPATH="$HOME/develop/go_workspace"
 export PATH=$PATH:$GOPATH/bin
