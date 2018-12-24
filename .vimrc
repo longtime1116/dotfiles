@@ -285,6 +285,9 @@ endif
 let g:go_bin_path = $GOPATH.'/bin'
 let g:go_version_warning = 0
 let g:go_fmt_options = ''
+set autowrite
+command GB :GoBuild
+command GR :GoRun
 
 " _/_/_/_/ Finalization _/_/_/_/
 filetype plugin indent on " Re-enable filetype
