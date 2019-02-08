@@ -41,6 +41,11 @@ alias fn='find ./ -name'
 # node.js
 source ~/.nvm/nvm.sh
 
+# python
+PYTHONSTARTUP=~/.pythonrc.py
+export PYTHONSTARTUP
+
+
 # $ ruby -v した時に、rbenv で設定した ruby と同じものを使うように
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
