@@ -17,5 +17,19 @@
   "sync.lastDownload": "",
   "sync.forceDownload": false,
   "window.zoomLevel": 0,
-  "C_Cpp.updateChannel": "Insiders"
+  "C_Cpp.updateChannel": "Insiders",
+
+  // Vim
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "vim.visualstar": true
 }
