@@ -19,12 +19,12 @@ $ sh export_extension.sh > ext.txt
 
 ```bash
 $ rm ~/Library/Application\ Support/Code/User/settings.json
-$ ln -s ./settings.json  ~/Library/Application\ Support/Code/User/settings.json
+$ ln -s ~/develop/dotfiles/vscode/settings.json  ~/Library/Application\ Support/Code/User/settings.json
 ```
 
 ### keybindings.json
 
 ```bash
 $ rm ~/Library/Application\ Support/Code/User/keybindings.json
-$ ln -s ./keybindings.json  ~/Library/Application\ Support/Code/User/keybindings.json
+$ ln -s ~/develop/dotfiles/vscode/keybindings.json  ~/Library/Application\ Support/Code/User/keybindings.json
 ```

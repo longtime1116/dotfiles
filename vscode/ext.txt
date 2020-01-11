@@ -5,5 +5,4 @@ esbenp.prettier-vscode
 MS-CEINTL.vscode-language-pack-ja
 ms-vscode.cpptools
 msjsdiag.debugger-for-chrome
-Shan.code-settings-sync
 vscodevim.vim
