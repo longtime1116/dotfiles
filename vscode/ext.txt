@@ -5,4 +5,6 @@ esbenp.prettier-vscode
 MS-CEINTL.vscode-language-pack-ja
 ms-vscode.cpptools
 msjsdiag.debugger-for-chrome
+rebornix.ruby
 vscodevim.vim
+wingrunr21.vscode-ruby
