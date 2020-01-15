@@ -46,9 +46,9 @@
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus"
   },
-  // close sidebar like EOF
+  // close sidebar
   {
-    "key": "ctrl+d",
+    "key": "ctrl+c",
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "sideBarFocus"
   }
