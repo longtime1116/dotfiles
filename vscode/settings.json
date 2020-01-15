@@ -3,7 +3,6 @@
     "suppressShowKeyBindingsNotice": true
   },
   "workbench.startupEditor": "newUntitledFile",
-  "editor.formatOnSave": true,
   "sync.gist": "c05bca38259f07a67dc0c64195af4db3",
   "sync.host": "",
   "sync.pathPrefix": "",
@@ -31,5 +30,8 @@
     }
   ],
   "vim.useSystemClipboard": true,
-  "vim.visualstar": true
+  "vim.visualstar": true,
+  "files.autoSave": "off",
+  "editor.formatOnSave": true,
+  "ruby.intellisense": "rubyLocate"
 }
