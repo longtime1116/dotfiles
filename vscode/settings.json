@@ -42,5 +42,7 @@
   "vim.visualstar": true,
   "files.autoSave": "off",
   "editor.formatOnSave": true,
-  "ruby.intellisense": "rubyLocate"
+  "ruby.intellisense": "rubyLocate",
+  "go.formatTool": "goimports",
+  "go.useLanguageServer": true
 }

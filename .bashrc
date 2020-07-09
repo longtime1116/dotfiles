@@ -50,5 +50,7 @@ export PYTHONSTARTUP
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
-export GOPATH="$HOME/develop/go_workspace"
+# go
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export GOROOT=/usr/local/opt/go/libexec
