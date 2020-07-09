@@ -54,3 +54,7 @@ eval "$(pyenv init -)"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GOROOT=/usr/local/opt/go/libexec
+alias gorun="watch -n1 "
+alias gor=gorun
+alias gobuild="watch -n1 go build -o "
+alias gob=gobuild
