@@ -58,3 +58,8 @@ alias gorun="watch -n1 "
 alias gor=gorun
 alias gobuild="watch -n1 go build -o "
 alias gob=gobuild
+function gom () {
+  project=`pwd | awk '{sub(".*develop/", ""); print $0}'`
+  path="github.com/longtime1116/"$project
+  go mod init $path
+}
