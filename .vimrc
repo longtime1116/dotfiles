@@ -142,3 +142,7 @@ function! DeleteParenthesesAdjoin()
     return output."\b"
 endfunction
 inoremap <silent> <BS> <C-R>=DeleteParenthesesAdjoin()<CR>
+
+" tags ファイルを遡って探しに行く
+set tags=./tags;,tags;
+
