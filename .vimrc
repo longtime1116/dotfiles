@@ -8,6 +8,8 @@ inoremap <C-l> <Right>
 noremap <S-s> k$ i#<esc>
 noremap s k$ x<esc>
 
+filetype plugin indent on " Re-enable filetype
+
 " 画面表示の設定
 
 set wildmode=list:longest
@@ -107,4 +109,36 @@ for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
 endfor
 
-filetype plugin indent on " Re-enable filetype
+" 閉じ記号
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+
+" 閉じ記号の一つ目を消したら全部消す関数と、そのbackspaceへの割り当て
+function! DeleteParenthesesAdjoin()
+    let pos = col(".") - 1  " カーソルの位置．1からカウント
+    let str = getline(".")  " カーソル行の文字列
+    let parentLList = ["(", "[", "{", "\'", "\""]
+    let parentRList = [")", "]", "}", "\'", "\""]
+    let cnt = 0
+
+    let output = ""
+
+    " カーソルが行末の場合
+    if pos == strlen(str)
+        return "\b"
+    endif
+    for c in parentLList
+        " カーソルの左右が同種の括弧
+        if str[pos-1] == c && str[pos] == parentRList[cnt]
+            call cursor(line("."), pos + 2)
+            let output = "\b"
+            break
+        endif
+        let cnt += 1
+    endfor
+    return output."\b"
+endfunction
+inoremap <silent> <BS> <C-R>=DeleteParenthesesAdjoin()<CR>
