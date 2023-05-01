@@ -18,3 +18,8 @@ alias gs='git status'
 alias gd='git diff'
 alias gg='git grep'
 
+# brew で install したものを使う
+alias ctags="`brew --prefix`/bin/ctags"
+alias ctag='ctags -R -f tags .'
+# rails 向き ctags
+alias ctagr='ctags --langmap=RUBY:.rb --exclude="*.js"  --exclude=".git*" -R .'
