@@ -1,55 +1,79 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入します
 [
   // forcus change like vim
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusSideBar",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.terminal.focus",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusFirstEditorGroup",
-    "when": "filesExplorerFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.focusFirstEditorGroup",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+z",
-    "command": "workbench.action.terminal.focus",
-    "when": "editorTextFocus"
-  },
-  // terminal action like iTerm2
-  {
-    "key": "cmd+t",
-    "command": "-workbench.action.showAllSymbols",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "cmd+t",
-    "command": "workbench.action.terminal.new",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+right",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+left",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus"
-  },
-  // close sidebar
-  {
-    "key": "ctrl+c",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "sideBarFocus"
-  }
+    {
+      "key": "ctrl+h",
+      "command": "workbench.action.focusSideBar",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+j",
+      "command": "workbench.action.terminal.focus",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+l",
+      "command": "workbench.action.focusFirstEditorGroup",
+      "when": "filesExplorerFocus"
+    },
+    {
+      "key": "ctrl+k",
+      "command": "workbench.action.focusFirstEditorGroup",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+z",
+      "command": "workbench.action.terminal.focus",
+      "when": "editorTextFocus"
+    },
+    // terminal action like iTerm2
+    {
+      "key": "cmd+t",
+      "command": "-workbench.action.showAllSymbols",
+      "when": "!terminalFocus"
+    },
+    {
+      "key": "cmd+t",
+      "command": "workbench.action.terminal.new",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "cmd+right",
+      "command": "workbench.action.terminal.focusNext",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "cmd+left",
+      "command": "workbench.action.terminal.focusPrevious",
+      "when": "terminalFocus"
+    },
+    // close sidebar
+    {
+      "key": "ctrl+c",
+      "command": "workbench.action.toggleSidebarVisibility",
+      "when": "sideBarFocus"
+    },
+    // jj or jk escape
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "j"
+    },
+    {
+        "command": "vscode-neovim.compositeEscape2",
+        "key": "k",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "k"
+    },
+    {
+        "command": "editor.action.revealDefinition",
+        "key": "Ctrl+]",
+        "when": "neovim.mode != insert && editorTextFocus",
+    },
+    {
+        "command": "workbench.action.navigateBack",
+        "key": "Ctrl+t",
+        "when": "neovim.mode != insert && editorTextFocus",
+    }
 ]

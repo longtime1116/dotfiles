@@ -23,3 +23,13 @@ alias ctags="`brew --prefix`/bin/ctags"
 alias ctag='ctags -R -f tags .'
 # rails 向き ctags
 alias ctagr='ctags --langmap=RUBY:.rb --exclude="*.js"  --exclude=".git*" -R .'
+
+# brew で手に入れた curl を使う
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
+# asdf.sh を読み込む
+. "$HOME/.asdf/asdf.sh"
+
+# For Ruby
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
