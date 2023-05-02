@@ -8,5 +8,7 @@
     "asvetliakov.vscode-neovim": 1
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/shumo/.config/nvim/init.vim"
+  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/shumo/.config/nvim/init.vim",
+  "editor.scrollBeyondLastLine": false,
+  "editor.padding.bottom": 100,
 }
