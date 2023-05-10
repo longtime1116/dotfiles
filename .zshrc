@@ -1,4 +1,9 @@
+
+
 export PS1="[%n:%d]$"
+
+# jで一個前のコマンドを実行
+alias j='fc -e -'
 
 alias ls='ls -h -G'
 alias sl='ls'
@@ -32,4 +37,3 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # For Ruby
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
