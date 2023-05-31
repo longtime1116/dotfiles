@@ -5,6 +5,7 @@ export PS1="[%n:%d]$"
 # jで一個前のコマンドを実行
 alias j='fc -e -'
 
+export LSCOLORS=gxfxcxdxbxegedabagacad
 alias ls='ls -h -G'
 alias sl='ls'
 
@@ -27,7 +28,7 @@ alias gg='git grep'
 alias ctags="`brew --prefix`/bin/ctags"
 alias ctag='ctags -R -f tags .'
 # rails 向き ctags
-alias ctagr='ctags --langmap=RUBY:.rb --exclude="*.js"  --exclude=".git*" -R .'
+alias ctagr='ctags --langmap=RUBY:.rb --exclude="*.js" --exclude="*.h"  --exclude=".git*" -R .'
 
 # brew で手に入れた curl を使う
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"

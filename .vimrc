@@ -144,5 +144,6 @@ endfunction
 inoremap <silent> <BS> <C-R>=DeleteParenthesesAdjoin()<CR>
 
 " tags ファイルを遡って探しに行く
-set tags=./tags;,tags;
+set tags=./tags;,tags,/Users/shumo/.asdf/installs/ruby/3.0.6/tags
+set tagcase=match
 
