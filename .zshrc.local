@@ -1,0 +1,3 @@
+alias dcin='docker exec -it rails_rehabilitation-web-1 bash'
+alias vi='code -r'
+alias v='code -r'

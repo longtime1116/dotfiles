@@ -1,5 +1,3 @@
-
-
 export PS1="[%n:%d]$"
 
 # jで一個前のコマンドを実行
@@ -21,8 +19,13 @@ alias grr='gr -R'
 alias gb='git branch'
 alias gc='git checkout'
 alias gs='git status'
+alias gsc='git switch -c'
 alias gd='git diff'
 alias gg='git grep'
+
+# docker
+alias dcu='docker compose up'
+alias dcd='docker compose down'
 
 # brew で install したものを使う
 alias ctags="`brew --prefix`/bin/ctags"
@@ -38,3 +41,5 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # For Ruby
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
