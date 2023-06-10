@@ -1,8 +1,24 @@
 {
   "editor.formatOnSave": true,
 
+  // js/ts settings
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   // ruby settings
   "ruby.format": "rubocop",
+  "[ruby]": {
+    "editor.tabSize": 2
+  },
   // neovim
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
@@ -10,5 +26,5 @@
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/shumo/.config/nvim/init.vim",
   "editor.scrollBeyondLastLine": false,
-  "editor.padding.bottom": 100,
+  "editor.padding.bottom": 100
 }
