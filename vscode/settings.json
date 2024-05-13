@@ -1,7 +1,4 @@
 {
-  "editor.formatOnSave": true,
-
-  // js/ts settings
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -15,16 +12,37 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // ruby settings
-  "ruby.format": "rubocop",
   "[ruby]": {
     "editor.tabSize": 2
   },
+  "ruby.intellisense": "rubyLocate",
+  "ruby.format": false,
+
   // neovim
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/shumo/.config/nvim/init.vim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/shumo.tokinaga/.config/nvim/init.vim",
+  "vscode-neovim.compositeKeys": {
+      "jk": {
+          // Use lua to execute any logic
+          "command": "vscode-neovim.lua",
+          "args": [
+              [
+                  "local code = require('vscode-neovim')",
+                  "code.action('vscode-neovim.escape')",
+                  "code.action('workbench.action.files.save')",
+              ],
+          ],
+      },
+  },
   "editor.scrollBeyondLastLine": false,
-  "editor.padding.bottom": 100
+  "editor.padding.bottom": 100,
+  "editor.inlineSuggest.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "window.zoomLevel": 1,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "security.workspace.trust.untrustedFiles": "open"
 }

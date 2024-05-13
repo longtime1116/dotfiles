@@ -53,19 +53,6 @@
       "command": "workbench.action.toggleSidebarVisibility",
       "when": "sideBarFocus"
     },
-    // jj or jk escape
-    {
-        "command": "vscode-neovim.compositeEscape1",
-        "key": "j",
-        "when": "neovim.mode == insert && editorTextFocus",
-        "args": "j"
-    },
-    {
-        "command": "vscode-neovim.compositeEscape2",
-        "key": "k",
-        "when": "neovim.mode == insert && editorTextFocus",
-        "args": "k"
-    },
     {
         "command": "editor.action.revealDefinition",
         "key": "Ctrl+]",
