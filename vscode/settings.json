@@ -31,8 +31,9 @@
       "args": [
         [
           "local code = require('vscode-neovim')",
-          "code.action('vscode-neovim.escape')",
-          "code.action('workbench.action.files.save')"
+          "code.action('vscode-neovim.escape')"
+          // 抜ける時に保存したければ
+          // "code.action('workbench.action.files.save')"
         ]
       ]
     }
